@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class DosenController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
    
     public function index()
     {
@@ -47,7 +51,7 @@ class DosenController extends Controller
     }
 
     
-    public function update(Request $request, Dosen $dosen)
+    public function update(Request $request, $id)
     {
         $dosen = Dosen::findOrFail($id);
         $dosen->nama = $request->nama;
